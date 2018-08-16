@@ -14,6 +14,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
+@Table(name ="user_forum")
 public class User {
 	@Id
 	private String userId;
@@ -24,7 +25,7 @@ public class User {
 	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Set<Feed> feeds = new HashSet<Feed>();
 	
-	
+	@OneToMany
 	private Set<Comment> comments = new HashSet<>();
 
 	public String getUserId() {

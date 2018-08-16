@@ -6,21 +6,39 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-
+@Table(name="Comment_jpa1")
 public class Comment {
 	@Id
 	private int commentId;
-	private String comment;
+	private String query;
 	private Timestamp timestamp;
 	
 	@ManyToOne
-	@JoinColumn(name="feedId")	private Feed feed;
+	@JoinColumn(name="feedId")	
+	private Feed feed;
 	
 	@ManyToOne
 	@JoinColumn(name ="userId")
 	private User user;
+
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getCommentId() {
 		return commentId;
@@ -31,11 +49,11 @@ public class Comment {
 	}
 
 	public String getComment() {
-		return comment;
+		return query;
 	}
 
 	public void setComment(String comment) {
-		this.comment = comment;
+		this.query = comment;
 	}
 
 	public Timestamp getTimestamp() {
